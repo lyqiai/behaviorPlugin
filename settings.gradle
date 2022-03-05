@@ -1,0 +1,3 @@
+include ':app'
+include ':behaviorPlugin'
+rootProject.name = "traceBehaviorPlugin"

@@ -121,9 +121,9 @@ class BehaviorDefaultAttach(private val behaviorHelper: BehaviorHelper) {
     }
 
     fun attach() {
-        behaviorHelper.elementId ?: behaviorHelper.buildElementId(this::buildElementId)
-        behaviorHelper.elementType ?: behaviorHelper.buildElementType(this::buildElementType)
-        behaviorHelper.elementContent ?: behaviorHelper.buildElementContent(this::buildElementContent)
-        behaviorHelper.context ?: behaviorHelper.buildContext(this::buildContext)
+        behaviorHelper.elementId ?: behaviorHelper.buildElementId { buildElementId() }
+        behaviorHelper.elementType ?: behaviorHelper.buildElementType(BehaviorHelper.BuildBehaviorCode { buildElementType() })
+        behaviorHelper.elementContent ?: behaviorHelper.buildElementContent{ buildElementContent() }
+        behaviorHelper.context ?: behaviorHelper.buildContext(BehaviorHelper.BuildBehaviorCode { buildContext() })
     }
 }
